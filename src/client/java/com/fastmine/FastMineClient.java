@@ -24,6 +24,14 @@ public class FastMineClient implements ClientModInitializer {
 			"category.fastmine" // Category for the keybinding
 	));
 
+	private static final KeyBinding TOGGLE_REPEAT_KEY = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+			"key.fastmine.toggle_repeat", // Key name in the options menu
+			GLFW.GLFW_KEY_N, // Key code for the toggle key
+			"category.fastmine" // Category for the keybinding
+	));
+
+	private boolean isRepeating = false;
+
 	@Override
 	public void onInitializeClient() {
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
@@ -31,7 +39,18 @@ public class FastMineClient implements ClientModInitializer {
 				return;
 			}
 
+			if (TOGGLE_REPEAT_KEY.wasPressed()) {
+				isRepeating = !isRepeating;
+			}
+
 			if (BREAK_BLOCKS_KEY.wasPressed()) {
+				Item heldItem = client.player.getMainHandStack().getItem();
+				if (isPickaxe(heldItem) || isShovel(heldItem)) {
+					breakBlocksAroundPlayer(client, client.world, heldItem);
+				}
+			}
+
+			if (isRepeating) {
 				Item heldItem = client.player.getMainHandStack().getItem();
 				if (isPickaxe(heldItem) || isShovel(heldItem)) {
 					breakBlocksAroundPlayer(client, client.world, heldItem);

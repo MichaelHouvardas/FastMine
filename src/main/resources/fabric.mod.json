@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "fast-mine",
+	"version": "${version}",
+	"name": "Fast Mine",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/fast-mine/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.fastmine.FastMine"
+		],
+		"client": [
+			"com.fastmine.FastMineClient"
+		]
+	},
+	"mixins": [
+		"fast-mine.mixins.json",
+		{
+			"config": "fast-mine.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.16.3",
+		"minecraft": "~1.21",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

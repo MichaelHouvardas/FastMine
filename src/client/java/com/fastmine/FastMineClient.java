@@ -29,15 +29,15 @@ public class FastMineClient implements ClientModInitializer {
 	public void onInitializeClient() {
 		// Register the keybindings
 		toggleBreakBlockKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-				"key.betterbridging.toggle_break_block", // Translation key
+				"key.fastmine.toggle_break_block", // Translation key
 				GLFW.GLFW_KEY_B, // Default key is 'B'
-				"category.betterbridging" // Category
+				"category.fastmine" // Category
 		));
 
 		breakBlockOnceKeybind = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-				"key.betterbridging.break_block_once", // Translation key
+				"key.fastmine.break_block_once", // Translation key
 				GLFW.GLFW_KEY_N, // Default key is 'N'
-				"category.betterbridging" // Category
+				"category.fastmine" // Category
 		));
 
 		// Register a tick event listener to check for key presses

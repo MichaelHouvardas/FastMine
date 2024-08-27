@@ -62,7 +62,7 @@ public class FastMineClient implements ClientModInitializer {
 					BlockPos pos = playerPos.add(x, y, z);
 					Block block = world.getBlockState(pos).getBlock();
 
-					if (isPickaxe(heldItem) && isMineable(block)) {
+					if (isPickaxe(heldItem) && isMineable(block) && !isBelowPlayer(pos, playerPos)) {
 						breakBlock(client, pos);
 					}
 
@@ -82,7 +82,7 @@ public class FastMineClient implements ClientModInitializer {
 
 	private boolean isShovelable(Block block) {
 		return block == Blocks.DIRT || block == Blocks.GRASS_BLOCK ||
-				block == Blocks.SAND;
+				block == Blocks.SAND || block == Blocks.GRAVEL;
 	}
 
 	private boolean isBelowPlayer(BlockPos pos, BlockPos playerPos) {

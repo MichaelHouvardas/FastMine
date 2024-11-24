@@ -107,7 +107,9 @@ public class FastMineClient implements ClientModInitializer {
 	private boolean isMineable(Block block) {
 		return block == Blocks.STONE || block == Blocks.DIORITE ||
 				block == Blocks.ANDESITE || block == Blocks.SANDSTONE ||
-				block == Blocks.GRANITE || block == Blocks.NETHERRACK;
+				block == Blocks.GRANITE || block == Blocks.NETHERRACK ||
+				block == Blocks.ICE || block == Blocks.PACKED_ICE ||
+				block == Blocks.BLUE_ICE;
 	}
 
 	private boolean isShovelable(Block block) {
